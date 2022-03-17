@@ -1,7 +1,7 @@
-import React from 'react'
+// import React from 'react'
 import { storiesOf, action } from '@kadira/storybook'
 import { withKnobs, text, boolean, number } from '@kadira/storybook-addon-knobs'
-import Taggy from '../index.js'
+import Taggy from '../index.jsx'
 
 const stories = storiesOf('React Taggy', module)
 

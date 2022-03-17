@@ -34,9 +34,9 @@
     "testonly": "mocha --require .scripts/mocha_runner src/**/tests/**/*.js",
     "test": "npm run lint && npm run testonly",
     "test-watch": "npm run testonly -- --watch --watch-extensions js",
-    "storybook": "start-storybook -p 9010",
+    "storybook": "yarn tsc && start-storybook -p 9010",
     "publish-storybook": "bash .scripts/publish_storybook.sh",
-    "tsc": "tsc src/index.tsx --jsx react-jsx"
+    "tsc": "tsc **/*.tsx */*/*.tsx --jsx react-jsx"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.18.1",

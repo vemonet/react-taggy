@@ -4,10 +4,10 @@ var React = require('react');
 // import React from 'react';
 
 interface taggy {
-    text: string;
-    spans: [];
-    ents: [];
-    clickTag: () => {};
+    text?: any;
+    spans?: any;
+    ents?: any;
+    clickTag?: any;
 }
 
 const defaultClickTag = (event: any, tag: any, index: any) => {
