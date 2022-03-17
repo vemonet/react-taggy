@@ -1,7 +1,11 @@
 import React from 'react'
 
+const defaultClickTag = (event, tag, index) => {
+    console.log('Clicked:', index, tag);
+}
+
 // Define functional component. Destructure the props.
-const Taggy = ({ text = '', spans = [], ents = []}) => {
+const Taggy = ({ text = '', spans = [], ents = [], clickTag = defaultClickTag}) => {
 
     // Find the correct color of the given entity type. If the given entity is not found, set the color to grey.
     const findRed = (type) => {
@@ -28,6 +32,7 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
         }
         return 220
     }
+
 
     // Initialize an empty array that will hold the text and entities
     let jsx = []
@@ -78,13 +83,14 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
         // Filter out the consecutive entities that were marked as duplicates
         elements = elements.filter(val => !!val)
         // Loop through our 'elements' array. Push strings directly to the 'jsx' array. Convert entity objects to jsx markup, then push to the 'jsx' array.
-        elements.forEach(t => {
+        elements.forEach((t, i) => {
             if (typeof t === 'string') {
                 jsx.push(t)
             }
             else {
                 jsx.push(
                     <mark
+                        onClick={(e) => clickTag(e, t, i)}
                         style={{
                             padding: '0.25em 0.35em',
                             margin: '0px 0.25em',

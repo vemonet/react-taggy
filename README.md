@@ -3,7 +3,14 @@
 
 #### A simple zero-dependency React component for tagging user-defined entities within a block of text. Older brother to [React Taggy Jr](https://github.com/johncmunson/react-taggy-jr).
 
+## ℹ️ About this fork
+
+This fork brings the following changes:
+
+* Add a `clickTag(event, tag, index)` prop to trigger a function that is called when a tag is clicked
+
 ## Demo
+
 Visit the [demo page](https://johncmunson.github.io/react-taggy/) and click on 'knobs' at the bottom to get a feel for how adjusting certain props effects the rendered component.
 
 ## Install
@@ -13,10 +20,15 @@ Visit the [demo page](https://johncmunson.github.io/react-taggy/) and click on '
 ## Basic Usage
 
 #### ES6
-`import Taggy from 'react-taggy'`
+```javascript
+import Taggy from 'react-taggy'
+```
 
 #### Node Modules
-`const Taggy = require('react-taggy').default`
+
+```javascript
+const Taggy = require('react-taggy').default
+```
 
 #### Props
 - `text`: (string || array) The text that will be displayed. May be a string, or an array of tokens.
@@ -24,7 +36,7 @@ Visit the [demo page](https://johncmunson.github.io/react-taggy/) and click on '
 - `ents`: (array) The allowable entity types and the color of each unique tag type. If `spans` contains a `type` that's not included in the `ents` array, then the color will be set to gray by default.
 
 #### Example usage where `text` is a string
-```javascript
+```jsx
 <Taggy text={text} spans={spans} ents={ents} />
 
 const text = 'Michael Jordan ate lunch yesterday in Chicago.'
@@ -43,7 +55,7 @@ const ents = [
 ```
 
 #### Example usage where `text` is an array
-```javascript
+```jsx
 <Taggy text={text} spans={spans} ents={ents} />
 
 const text = ['Michael', 'Jordan', 'ate', 'lunch', 'yesterday', 'in', 'Chicago', '.']
@@ -67,6 +79,19 @@ const ents = [
 All contributors will receive proper attribution, as outlined in the awesome [All-Contributors](https://github.com/kentcdodds/all-contributors) specification developed by open-source superstar [Kent C. Dodds](https://twitter.com/kentcdodds?lang=en).
 
 ## Development Setup
+
+1. Clone the repository
+2. Install the dependencies
+
+```bash
+yarn
+```
+
+3. Run the storybook on http://localhost:9010 to test your changes
+
+```bash
+yarn storybook
+```
 
 This component was bootstrapped with [React CDK](https://github.com/kadirahq/react-cdk). Please refer to [React CDK documentation](https://github.com/kadirahq/react-cdk)) to get started with the development.
 
