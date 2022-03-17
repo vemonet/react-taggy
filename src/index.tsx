@@ -1,14 +1,24 @@
-import React from 'react'
+declare var require: any
+var React = require('react');
 
-const defaultClickTag = (event, tag, index) => {
+// import React from 'react';
+
+interface taggy {
+    text: string;
+    spans: [];
+    ents: [];
+    clickTag: () => {};
+}
+
+const defaultClickTag = (event: any, tag: any, index: any) => {
     console.log('Clicked:', index, tag);
 }
 
 // Define functional component. Destructure the props.
-const Taggy = ({ text = '', spans = [], ents = [], clickTag = defaultClickTag}) => {
+const Taggy: React.FunctionComponent<taggy> = ({ text = '', spans = [], ents = [], clickTag = defaultClickTag}: any) => {
 
     // Find the correct color of the given entity type. If the given entity is not found, set the color to grey.
-    const findRed = (type) => {
+    const findRed = (type: any) => {
         for (let e = 0; e < ents.length; e++) {
             if (ents[e].type === type) {
                 return ents[e].color.r
@@ -16,7 +26,7 @@ const Taggy = ({ text = '', spans = [], ents = [], clickTag = defaultClickTag}) 
         }
         return 220
     }
-    const findGreen = (type) => {
+    const findGreen = (type: any) => {
         for (let e = 0; e < ents.length; e++) {
             if (ents[e].type === type) {
                 return ents[e].color.g
@@ -24,7 +34,7 @@ const Taggy = ({ text = '', spans = [], ents = [], clickTag = defaultClickTag}) 
         }
         return 220
     }
-    const findBlue = (type) => {
+    const findBlue = (type: any) => {
         for (let e = 0; e < ents.length; e++) {
             if (ents[e].type === type) {
                 return ents[e].color.b
@@ -35,16 +45,16 @@ const Taggy = ({ text = '', spans = [], ents = [], clickTag = defaultClickTag}) 
 
 
     // Initialize an empty array that will hold the text and entities
-    let jsx = []
+    let jsx: any = []
 
     // METHOD 1 - STRING
     if (typeof text === 'string') {
         // Initialize an empty array. The contents of 'elements' will eventually get pushed to the 'jsx' array, and will be converted to jsx markup in the process.
-        let elements = []
+        let elements: any = []
         // Keep track of location in the string of text
         let offset = 0
         // Loop through the spans, using the span data to construct the 'elements' array
-        spans.forEach(({ type, start, end }) => {
+        spans.forEach(({ type, start, end }: any) => {
             // Create a string of text that does not contain any entities
             const fragment = text.slice(offset, start)
             // Create an entity
@@ -61,7 +71,7 @@ const Taggy = ({ text = '', spans = [], ents = [], clickTag = defaultClickTag}) 
         // After pushing all of the entities to the 'elements' array, push the remaining text to the 'elements' array. Elements should now consist of strings and objects/entities.
         elements.push(text.slice(offset, text.length))
         // Filter out unnecessary spaces
-        elements = elements.filter(val => val !== ' ')
+        elements = elements.filter((val: any) => val !== ' ')
         // Loop through elements array looking for multi-word entities.
         for (let e = 0; e < elements.length; e++) {
             // Check if we've stopped at an entity
@@ -81,9 +91,9 @@ const Taggy = ({ text = '', spans = [], ents = [], clickTag = defaultClickTag}) 
             }
         }
         // Filter out the consecutive entities that were marked as duplicates
-        elements = elements.filter(val => !!val)
+        elements = elements.filter((val: any) => !!val)
         // Loop through our 'elements' array. Push strings directly to the 'jsx' array. Convert entity objects to jsx markup, then push to the 'jsx' array.
-        elements.forEach((t, i) => {
+        elements.forEach((t: any, i: any) => {
             if (typeof t === 'string') {
                 jsx.push(t)
             }
@@ -234,7 +244,7 @@ const Taggy = ({ text = '', spans = [], ents = [], clickTag = defaultClickTag}) 
     // Return the markup
     return (
         <div>
-            {jsx.map((j, i) => (
+            {jsx.map((j: any, i: any) => (
                 <span key={i}>{j}</span>
             ))}
         </div>

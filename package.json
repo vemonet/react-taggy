@@ -27,19 +27,22 @@
   ],
   "license": "BSD",
   "scripts": {
-    "prepublish": ". ./.scripts/prepublish.sh",
-    "postpublish": "npm run publish-storybook",
+    "prepublish-back": ". ./.scripts/prepublish.sh",
+    "postpublish-back": "npm run publish-storybook",
     "lint": "eslint src",
     "lintfix": "eslint src --fix",
     "testonly": "mocha --require .scripts/mocha_runner src/**/tests/**/*.js",
     "test": "npm run lint && npm run testonly",
     "test-watch": "npm run testonly -- --watch --watch-extensions js",
     "storybook": "start-storybook -p 9010",
-    "publish-storybook": "bash .scripts/publish_storybook.sh"
+    "publish-storybook": "bash .scripts/publish_storybook.sh",
+    "tsc": "tsc src/index.tsx --jsx react-jsx"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.18.1",
     "@kadira/storybook-addon-knobs": "^1.7.1",
+    "@types/node": "^17.0.21",
+    "@types/react": "^17.0.40",
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
     "babel-eslint": "^6.1.2",
@@ -61,7 +64,8 @@
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
-    "sinon": "^1.17.6"
+    "sinon": "^1.17.6",
+    "typescript": "^4.6.2"
   },
   "peerDependencies": {
     "react": "^0.14.7 || ^15.0.0"
