@@ -3,7 +3,17 @@
 
 #### A simple zero-dependency React component for tagging user-defined entities within a block of text. Older brother to [React Taggy Jr](https://github.com/johncmunson/react-taggy-jr).
 
+## ℹ️ About this fork
+
+This fork brings the following changes:
+
+* Add a `clickTag(event, tag, elemIndex)` prop to pass a function triggered when a tag is clicked
+* Add a `onHighlight(event, text, spanIndex, start, end)` prop to pass a function triggered when text is highlighted using the mouse (useful to add new tags)
+* Additional properties passed to the `spans` objects are now kept (instead of just adding `start`, `end` and `token`)
+* Fix bug when the `spans` array is not sorted by start position
+
 ## Demo
+
 Visit the [demo page](https://johncmunson.github.io/react-taggy/) and click on 'knobs' at the bottom to get a feel for how adjusting certain props effects the rendered component.
 
 ## Install
